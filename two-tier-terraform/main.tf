@@ -1,5 +1,5 @@
 module "vpc" {
-  source = "../modules/aws-vpc"
+  source = "./modules/aws-vpc"
 
   vpc-name        = var.VPC-NAME
   vpc-cidr        = var.VPC-CIDR
@@ -20,4 +20,9 @@ module "vpc" {
   public-rt-name2  = var.PUBLIC-RT-NAME2
   private-rt-name1 = var.PRIVATE-RT-NAME1
   private-rt-name2 = var.PRIVATE-RT-NAME2
+}
+module "alb" {
+  source            = "./modules/aws-alb"
+  vpc_id            = module.vpc.vpc_id
+  public_subnet_ids = module.vpc.public_subnet_ids
 }
