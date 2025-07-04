@@ -36,7 +36,7 @@ resource "aws_lb" "web-elb" {
   name = var.alb-name
   internal           = false
   load_balancer_type = "application"
-  subnets            = [var.public_subnet_ids]
+  subnets            = var.public_subnet_ids
   security_groups    = [aws_security_group.web-alb-sg.id]
   ip_address_type    = "ipv4"
   enable_deletion_protection = false

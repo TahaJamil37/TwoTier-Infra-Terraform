@@ -25,4 +25,15 @@ module "alb" {
   source            = "./modules/aws-alb"
   vpc_id            = module.vpc.vpc_id
   public_subnet_ids = module.vpc.public_subnet_ids
+  alb-name            = var.ALB-NAME
+  tg-name             = var.TG-NAME
+}
+module "iam" {
+  source = "../modules/aws-iam"
+
+  iam-role              = var.IAM-ROLE
+  iam-policy            = var.IAM-POLICY
+  instance-profile-name = var.INSTANCE-PROFILE-NAME
+
+  depends_on = [module.alb]
 }
