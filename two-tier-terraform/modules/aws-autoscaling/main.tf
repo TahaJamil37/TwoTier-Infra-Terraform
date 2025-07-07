@@ -4,15 +4,15 @@ resource "aws_launch_template" "Web-LC" {
   image_id = data.aws_ami.ami.image_id
   instance_type = "t2.micro"
 
-  vpc_security_group_ids = [data.aws_security_group.web-sg.id]
+  vpc_security_group_ids = [var.alb-sg-id]
 
-  user_data = filebase64("../modules/aws-autoscaling/deploy.sh")
+  user_data = filebase64("./modules/aws-autoscaling/userdata.sh")
 }
 
 
 resource "aws_autoscaling_group" "Web-ASG" {
   name = var.asg-name
-  vpc_zone_identifier  = [data.aws_subnet.public-subnet1.id, data.aws_subnet.public-subnet2.id]
+  vpc_zone_identifier  = var.public_subnet_ids
   launch_template {
     id = aws_launch_template.Web-LC.id
     version = aws_launch_template.Web-LC.latest_version
@@ -22,7 +22,7 @@ resource "aws_autoscaling_group" "Web-ASG" {
   max_size             = 4
   health_check_type    = "ELB"
   health_check_grace_period = 300
-  target_group_arns    = [data.aws_lb_target_group.tg.arn]
+  target_group_arns    = [var.aws_lb_target_group]
   force_delete         = true
   tag {
     key                 = "Name"

@@ -28,12 +28,38 @@ module "alb" {
   alb-name            = var.ALB-NAME
   tg-name             = var.TG-NAME
 }
+
+module "security-group" {
+  source = "./modules/security-group"
+  vpc_id    = module.vpc.vpc_id
+  alb-sg-id = module.alb.alb-sg-id
+  web-sg-name = var.WEB-SG-NAME
+ 
+
+  depends_on = [module.vpc]
+}
 module "iam" {
-  source = "../modules/aws-iam"
+  source = "./modules/aws-iam"
 
   iam-role              = var.IAM-ROLE
   iam-policy            = var.IAM-POLICY
   instance-profile-name = var.INSTANCE-PROFILE-NAME
 
   depends_on = [module.alb]
+}
+
+module "autoscaling" {
+  source = "./modules/aws-autoscaling"
+
+  ami_name              = var.AMI-NAME
+  launch-template-name  = var.LAUNCH-TEMPLATE-NAME
+  instance-profile-name = var.INSTANCE-PROFILE-NAME
+  web-sg-name           = var.WEB-SG-NAME
+  aws_lb_target_group   = module.alb.aws_lb_target_group_tg
+  iam-role              = var.IAM-ROLE
+  public_subnet_ids     = module.vpc.public_subnet_ids
+  alb-sg-id             = module.alb.alb-sg-id
+  asg-name              = var.ASG-NAME
+
+  depends_on = [module.iam]
 }

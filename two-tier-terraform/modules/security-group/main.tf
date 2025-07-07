@@ -1,7 +1,7 @@
 
 
 resource "aws_security_group" "web-tier-sg" {
-  vpc_id      = data.aws_vpc.vpc.id
+  vpc_id      = var.vpc_id
   description = "Allow HTTP and HTTPS for ALB Only"
   ingress {
     from_port   = 80
@@ -21,14 +21,14 @@ resource "aws_security_group" "web-tier-sg" {
     from_port       = 80
     to_port         = 80
     protocol        = "tcp"
-    security_groups = [aws_security_group.alb-sg.id]
+    security_groups = [var.alb-sg-id]
   }
 
   ingress {
     from_port       = 443
     to_port         = 443
     protocol        = "tcp"
-    security_groups = [aws_security_group.alb-sg.id]
+    security_groups = [var.alb-sg-id]
   }
 
   egress {
