@@ -1,4 +1,4 @@
-# AWS 2-Tier Architecture with Terraform
+# Terraform AWS Infrastructure Documentation
 
 This project provisions a **highly available, secure, and scalable AWS infrastructure** using **modular Terraform**.  
 It includes a **custom VPC**, **Public & Private Subnets**, **ALB**, **Auto Scaling**, **EC2 Instances**, **RDS**, **IAM Roles**, **Route 53**, and **CloudFront** with **ACM**.
@@ -31,7 +31,6 @@ It includes a **custom VPC**, **Public & Private Subnets**, **ALB**, **Auto Scal
 
 ## 🗺️ Architecture Diagram
 
-_Optional: Add a diagram here._
 
 ![Architecture](images/aws_architecture.png)
 
@@ -59,7 +58,7 @@ _Optional: Add a diagram here._
 ---
 
 
-# Terraform AWS Infrastructure Documentation
+
 
 ## Setup Instructions
 
