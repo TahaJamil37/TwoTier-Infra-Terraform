@@ -32,7 +32,8 @@ It includes a **custom VPC**, **Public & Private Subnets**, **ALB**, **Auto Scal
 ## 🗺️ Architecture Diagram
 
 
-![Architecture](images/aws_architecture.png)
+<img src="images/aws_architecture.png" alt="Architecture Diagram" width="600"/>
+
 
 ---
 
@@ -59,9 +60,18 @@ It includes a **custom VPC**, **Public & Private Subnets**, **ALB**, **Auto Scal
 
 
 
+## 🚀 Getting Started
+
+### Clone the Repository
+First, clone this repository to your local machine:
+
+```bash
+git clone https://github.com/TahaJamil37/terraform-two-tier-aws.git
+cd terraform-two-tier-aws
+```
+
 
 ## Setup Instructions
-
 ### 1. Configure AWS CLI
 First, configure your AWS credentials:
 
