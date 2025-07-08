@@ -33,7 +33,7 @@ It includes a **custom VPC**, **Public & Private Subnets**, **ALB**, **Auto Scal
 
 _Optional: Add a diagram here._
 
-![Architecture](images/aws-architecture.png)
+![Architecture](images/aws_architecture.png)
 
 ---
 
