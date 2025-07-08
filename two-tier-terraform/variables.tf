@@ -51,8 +51,6 @@ variable "ASG-NAME" {}
 variable "DOMAIN-NAME" {}
 variable "CDN-NAME" {}
 
-# WAF
-variable "WEB-ACL-NAME" {}
 
 
 
@@ -64,13 +62,3 @@ variable "WEB-ACL-NAME" {}
 
 
 
-# variable "" {}
-# variable "" {}
-# variable "" {}
-# variable "" {}
-# variable "" {}
-# variable "" {}
-# variable "" {}
-# variable "" {}
-# variable "" {}
-# variable "" {}
